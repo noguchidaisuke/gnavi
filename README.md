@@ -1,74 +1,43 @@
 
-# ツール・ライブラリの名前
+# Guchi Navi
  
-概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要
- 
-## 簡単な説明
- 
-簡単な説明簡単な説明簡単な説明簡単な説明簡単な説明簡単な説明簡単な説明
-簡単な説明簡単な説明簡単な説明簡単な説明簡単な説明簡単な説明簡単な説明
-簡単な説明簡単な説明簡単な説明簡単な説明簡単な説明簡単な説明簡単な説明
-簡単な説明簡単な説明簡単な説明簡単な説明簡単な説明簡単な説明簡単な説明
- 
+## アプリケーション概要
+
+ぐるなびAPIを使った口コミ投稿サイト。
+
 ***デモ***
  
-![デモ](https://image-url.gif)
+![デモ](https://my-gnavi-free.ga/)
  
 ## 機能
  
-- 機能1（UI/計算 etc ...）
-- 機能2
-- 機能3
-- ...
- 
-他の機能はこちらを参照して下さい。`awesome-tool --help`.
- 
-## 必要要件
- 
-- 要件
-- 要件
-- 要件
-- ...
- 
+- ユーザー登録
+- コメント投稿
+- 星で評価
+- ぐるなびAPIを使った検索機能
+- 現在地から検索
+- 地名から検索
+- ランキング機能
+
 ## 使い方
  
-1. 使い方
-2. 使い方
-3. 使い方
- 
-## インストール
- 
-```
-$ git clone https://github.com/TomoakiTANAKA/awesome-tool
-$ cd awesome-tool
-$ sh setup.sh
-$ ~do anything~
-```
+1. toppageに検索したいワード、地名を入力。現在地から検索したい場合はAreaフォームをクリックすると出現する「現在地」を押す
+2. googlemapと検索結果が表示される。興味のある店をクリック
+3. 詳細ページに飛ぶ。詳細ページでは、コメントの投稿、編集、削除ならびにお気に入り登録を行うことができる
+4. 投稿したコメントはマイページの「投稿したお店」から参照できる。
  
 ## テスト
- 
-1. 使い方
-2. 使い方
-3. 使い方
+簡単なmodelの単体テスト。
+capybaraによる統合テスト。
+VCRを使ったぐるなびAPIのモックテスト。
  
 ## デプロイ
+CI/CD: CircleCI
+AWS: ECS
  
-1. デプロイ
-2. デプロイ
-3. デプロイ
+## 使用技術一覧
+Rails / Mysql / Docker / CircleCI / Jquery / ECS /  RDS / SchemaSpy
+
+##　外部API
+Gurunavi / Twitter / GoogleMap / Stripe
  
-## その他
- 
-その他その他その他その他
-その他その他その他その他
-その他その他その他その他
-その他その他その他その他
- 
-## 作者
- 
-[@TanakanoAnchan](https://twitter.com/TanakanoAnchan)
-mail to: xxxx@mail.com
- 
-## ライセンス
- 
-[MIT](http://TomoakiTANAKA.mit-license.org)</blockquote>
