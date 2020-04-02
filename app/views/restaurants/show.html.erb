@@ -1,7 +1,10 @@
 <%= render 'restaurant_nav'%>
+<!-- top map -->
 <div class="show-restaurant_map">
   <div id="map"></div>
 </div>
+
+<!-- ユーザー投稿画像一覧 -->
 <% if @comment_images.present? %>
   <h4 class="mt-1">投稿された画像一覧</h4>
   <div class="show-restaurant_right_images">
@@ -12,19 +15,20 @@
     <% end %>
   </div>
 <%end%>
+
+<!-- comment area -->
 <div class="comment-area col-sm-7">
   <div class="item-desc">
     <p class="item-title show_title_size"><%= @restaurant.name %></p>
-    <div class="rating_container">
-      <div class="star-rating show_rating_size" data-score= <%=  @avg_comment_rating %>></div>
-      <div class="show_star-rating_count"><%= @avg_comment_rating %></div>
+    <div class="rating_container" id="star_target">
+      <%= render 'star_rating' %>
     </div>
     <div>
       <span class="write-review">
-        <i class="fas fa-edit"></i><%= link_to 'レビューを書く',new_restaurant_comment_path(@restaurant) %>
+        <i class="fas fa-edit"></i><%= link_to 'レビューを書く',new_restaurant_comment_path(@restaurant), remote: true %>
       </span>
-      <%if logged_in?%>
-        <span class="show-restaurant_like">
+      <% if logged_in? %>
+        <span id="show-restaurant_like">
           <%= render 'likes/like_button', restaurant: @restaurant%>
         </span>
       <%end%>
@@ -32,14 +36,20 @@
   </div>
 
   <div class="comment_listTitle">レビュー　一覧</div>
-  <% if @comments.present? %>
+  <div id="comment_render_place">
     <%= render @comments %>
-  <% else %>
-    <div class="empty_comments">
-      <h1><%= link_to '一つ目のレビューを書く', new_restaurant_comment_path(@restaurant) %></h1>
-    </div>
-  <% end %>
+  </div>
+
+
+  <div id="paginator">
+    <%= paginate @comments,remote: true %>
+  </div>
 </div>
+
+<!-- Modal -->
+
+
+<!-- Information table -->
 <div class="col-sm-5">
   <div class="item_pr_long">
     <button>お店情報</button>
@@ -79,15 +89,8 @@ function initMap() {
     position: {lat: <%= @latlng[0] %>, lng: <%= @latlng[1] %>},
     map: map
   });
-}
-
-$('.star-rating').raty({
-    path: '/assets/',
-    readOnly: true,
-    score: function() {
-          return $(this).attr('data-score');
-  }
-});
+};
 </script>
-<%= javascript_include_tag 'googlemap.js' %>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbs-NqOhNQ_4ZB_gdsVID5h0LWSEX2GIE&callback=initMap" async defer></script>
+<%= javascript_include_tag 'ro_starreview' %>
+<%= javascript_include_tag 'googlemap.js' %>

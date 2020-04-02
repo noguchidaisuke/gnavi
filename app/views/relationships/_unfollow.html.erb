@@ -1,0 +1,4 @@
+<%= form_with(url: relationship_path(user),method: :delete,local: false) do |f|  %>
+  <%= hidden_field_tag :follow_id, user.id %>
+  <span class="following_button"><i class="fas fa-check"></i><input type="submit" name="commit" value="Following" class="following" data-disable-with="送信中"></span>
+<% end %>

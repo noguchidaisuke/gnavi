@@ -6,7 +6,7 @@
         <div class="col-12 user-img">
           <i class="fab fa-gofore"></i>
         </div>
-        <%= form_with model: @user,url: signup_path do |f| %>
+        <%= form_with model: @user,url: signup_path,local:true do |f| %>
           <%= render 'layouts/error_messages', model: f.object%>
           <form class="col-12">
             <div class="form-login">

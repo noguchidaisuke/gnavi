@@ -35,19 +35,11 @@
     <div class="comment_bottom">
         <i class="far fa-calendar-alt"></i><span><%= comment.created_at.to_s(:datetime_jp) %></span>
         <% if comment.user == current_user %>
-          <%= link_to edit_restaurant_comment_path(comment.restaurant_id,comment),class: 'btn btn-success btn-sm' do %><i class="fas fa-edit"></i><%end%>
-          <%= link_to restaurant_comment_path(comment.restaurant_id,comment), method: :delete, data: { confirm: '削除してよろしいですか？' },class: 'btn btn-danger' do %><i class="fas fa-trash-alt"></i><%end%>
+          <%= link_to edit_restaurant_comment_path(comment.restaurant_id,comment),class: 'btn btn-success btn-sm',remote: true do %><i class="fas fa-edit"></i><%end%>
+          <%= link_to restaurant_comment_path(comment.restaurant_id,comment), method: :delete, data: { confirm: '削除してよろしいですか？' },class: 'btn btn-danger',remote: true do %><i class="fas fa-trash-alt"></i><%end%>
         <% end %>
     </div>
   </div>
 <% end %>
 
-<script>
-  $('.star-rating').raty({
-      path: '/assets/',
-      readOnly: true,
-      score: function() {
-            return $(this).attr('data-score');
-    }
-  });
-</script>
+<%= javascript_include_tag 'ro_starreview' %>

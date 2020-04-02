@@ -1,24 +1,9 @@
 <div class="new-restaurant_container row">
   <div class="new-restaurant_top col-sm-5">
-    <%= form_with(model:@restaurant.comments.new,url: restaurant_comments_path) do |f|%>
-        <h2><%= @restaurant.name %></h2>
-        <div class="new-restaurant_form">
-          <div id="star-rating" class="new-rating"></div>
-          <%= f.text_area :comment,class:'new-restaurant_comment', cols: 40 %>
-        </div>
-        <div class="new-restaurant_img">
-          <%= f.label :images, '投稿画像  ( 複数選択可能 )' %>
-          <%= f.file_field :images, multiple: true,id:"images" %>
-        </div>
-        <div id="preview" style="display:none"></div>
-        <%= f.submit '投稿する！' ,class:'btn btn-primary' %>
-    <%end%>
+    <%= render 'comment_form' %>
   </div>
   <div class="recent-comments scroll col-sm-3">
     <h3>最近のレビュー</h3>
-    <%= render @comments %>
+    <%= render @comment_images %>
   </div>
 </div>
-
-<%= javascript_include_tag "preview.js" %>
-

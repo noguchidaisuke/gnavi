@@ -7,7 +7,6 @@ services:
     ports:
       - '3306:3306'
     environment:
-      MYSQL_ROOT_USER: root
       MYSQL_ROOT_PASSWORD: password
   web_dev:
     build:
@@ -20,7 +19,7 @@ services:
     tty: true
     stdin_open: true
     depends_on:
-      - db
+      - db_dev
   server_dev:
     build: ./nginx.dev
     volumes:

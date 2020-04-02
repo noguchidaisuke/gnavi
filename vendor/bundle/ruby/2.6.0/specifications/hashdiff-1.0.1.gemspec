@@ -15,27 +15,21 @@ Gem::Specification.new do |s|
   s.homepage = "https://github.com/liufengyun/hashdiff".freeze
   s.licenses = ["MIT".freeze]
   s.required_ruby_version = Gem::Requirement.new(">= 2.0.0".freeze)
-  s.rubygems_version = "3.0.3".freeze
+  s.rubygems_version = "3.1.2".freeze
   s.summary = "Hashdiff is a diff lib to compute the smallest difference between two hashes.".freeze
 
-  s.installed_by_version = "3.0.3" if s.respond_to? :installed_by_version
+  s.installed_by_version = "3.1.2" if s.respond_to? :installed_by_version
 
   if s.respond_to? :specification_version then
     s.specification_version = 4
+  end
 
-    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_development_dependency(%q<bluecloth>.freeze, [">= 0"])
-      s.add_development_dependency(%q<rspec>.freeze, ["~> 2.0"])
-      s.add_development_dependency(%q<rubocop>.freeze, ["~> 0.49.1"])
-      s.add_development_dependency(%q<rubocop-rspec>.freeze, [">= 0"])
-      s.add_development_dependency(%q<yard>.freeze, [">= 0"])
-    else
-      s.add_dependency(%q<bluecloth>.freeze, [">= 0"])
-      s.add_dependency(%q<rspec>.freeze, ["~> 2.0"])
-      s.add_dependency(%q<rubocop>.freeze, ["~> 0.49.1"])
-      s.add_dependency(%q<rubocop-rspec>.freeze, [">= 0"])
-      s.add_dependency(%q<yard>.freeze, [">= 0"])
-    end
+  if s.respond_to? :add_runtime_dependency then
+    s.add_development_dependency(%q<bluecloth>.freeze, [">= 0"])
+    s.add_development_dependency(%q<rspec>.freeze, ["~> 2.0"])
+    s.add_development_dependency(%q<rubocop>.freeze, ["~> 0.49.1"])
+    s.add_development_dependency(%q<rubocop-rspec>.freeze, [">= 0"])
+    s.add_development_dependency(%q<yard>.freeze, [">= 0"])
   else
     s.add_dependency(%q<bluecloth>.freeze, [">= 0"])
     s.add_dependency(%q<rspec>.freeze, ["~> 2.0"])

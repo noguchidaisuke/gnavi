@@ -1,5 +1,5 @@
 $('#star-rating').raty({
-  path: '/assets/',
+  path: '',
   scoreName: 'comment[rating]'
 });
 

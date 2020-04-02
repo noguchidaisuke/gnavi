@@ -1,2 +1,3 @@
-cd && cd desktop
-ssh -i aws-and-infra-ssh-key.pem ec2-user@13.114.107.20
+rails assets:clobber RAILS_ENV=production
+rails assets:precompile RAILS_ENV=production
+rails s -e production

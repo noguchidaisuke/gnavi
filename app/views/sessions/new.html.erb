@@ -6,26 +6,7 @@
           <div class="col-12 user-img">
             <i class="fab fa-gofore"></i>
           </div>
-          <%= form_with scope: :session,url: login_path do |f| %>
-
-            <form class="col-12">
-              <div class="form-login email">
-                <%= f.text_field :email,id: "Email", class: 'form-control',placeholder: "Email" %>
-              </div>
-              <div class="form-login password">
-                <%= f.text_field :password,id: "Password", class: 'form-control',placeholder: "Password" %>
-              </div>
-              <button type="submit" class="btn-login" value="ログイン"><i class="fas fa-sign-in-alt"></i>ログイン</button>
-              <p class="or">or</p>
-              <button type="submit" class="btn-tweet-login"><i class="fab fa-twitter"></i>Twitterでログイン</button>
-              <br>
-            </form>
-          <% end %>
-          <%= form_with scope: :session, url: login_path do |f| %>
-            <%= f.hidden_field :email, value: "test@test.test" %>
-            <%= f.hidden_field :password, value: "test" %>
-            <button type="submit" class="btn-login test-login"><i class="fas fa-sign-in-alt"></i>テストログイン</button>
-          <% end %>
+          <%= render 'login_form' %>
         </div> <!-- end of cotent -->
       </div>
     </div>

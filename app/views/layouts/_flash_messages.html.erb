@@ -1,17 +1,8 @@
-
-<% if flash[:success] %>
-  <div class="alert alert-success">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong><i class="far fa-check-circle"></i><%= flash[:success] %></strong>
-  </div>
-<% elsif flash[:danger] %>
-  <div class="alert alert-danger center-block">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong><i class="fas fa-exclamation-circle"></i><%= flash[:danger]%></strong>
-  </div>
-<% elsif flash[:notice] %>
-  <div class="alert alert-info">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <%= flash[:notice]%>
-  </div>
+<% unless flash.empty? %>
+  <script>
+      <% flash.each do |type, messages| %>
+      <% type = type.to_s.gsub('danger','error').gsub('notice','info') %>
+      toastr["<%= type %>"]("<%= messages %>", "<%= type.upcase %>");
+      <% end %>
+  </script>
 <% end %>

@@ -1,5 +1,5 @@
 current directory: /Users/noguchidaisuke/gnavi/vendor/bundle/ruby/2.6.0/gems/therubyracer-0.12.3/ext/v8
-/Users/noguchidaisuke/.rbenv/versions/2.6.3/bin/ruby -I /Users/noguchidaisuke/.rbenv/versions/2.6.3/lib/ruby/2.6.0 -r ./siteconf20200109-74219-1pfpqof.rb extconf.rb
+/Users/noguchidaisuke/.rbenv/versions/2.6.3/bin/ruby -I /Users/noguchidaisuke/.rbenv/versions/2.6.3/lib/ruby/site_ruby/2.6.0 -r ./siteconf20200331-8213-xkcwey.rb extconf.rb
 checking for -lpthread... yes
 checking for -lobjc... yes
 creating Makefile
@@ -83,4 +83,4 @@ linking shared-object v8/init.bundle
 
 current directory: /Users/noguchidaisuke/gnavi/vendor/bundle/ruby/2.6.0/gems/therubyracer-0.12.3/ext/v8
 make "DESTDIR=" install
-/usr/local/bin/ginstall -c -m 0755 init.bundle ./.gem.20200109-74219-1la9kcf/v8
+/usr/local/bin/ginstall -c -m 0755 init.bundle ./.gem.20200331-8213-unvh28/v8

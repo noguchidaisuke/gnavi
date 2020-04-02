@@ -20,8 +20,8 @@ default: &default
 development:
   <<: *default
   database: app_development
-  #password:
-  #host: localhost
+  password:
+  host: localhost
 
 test:
   <<: *default
@@ -33,4 +33,4 @@ production:
   #adapter: mysql
   #encoding: unicode
   #pool: 5
-  host: aws-and-infra-db.cvh8iz4psy0l.ap-northeast-1.rds.amazonaws.com
+  #host: aws-and-infra-db.cvh8iz4psy0l.ap-northeast-1.rds.amazonaws.com

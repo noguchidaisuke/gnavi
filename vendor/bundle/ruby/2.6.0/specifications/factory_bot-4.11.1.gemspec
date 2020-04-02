@@ -14,37 +14,26 @@ Gem::Specification.new do |s|
   s.homepage = "https://github.com/thoughtbot/factory_bot".freeze
   s.licenses = ["MIT".freeze]
   s.required_ruby_version = Gem::Requirement.new(">= 1.9.2".freeze)
-  s.rubygems_version = "3.0.3".freeze
+  s.rubygems_version = "3.1.2".freeze
   s.summary = "factory_bot provides a framework and DSL for defining and using model instance factories.".freeze
 
-  s.installed_by_version = "3.0.3" if s.respond_to? :installed_by_version
+  s.installed_by_version = "3.1.2" if s.respond_to? :installed_by_version
 
   if s.respond_to? :specification_version then
     s.specification_version = 4
+  end
 
-    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<activesupport>.freeze, [">= 3.0.0"])
-      s.add_development_dependency(%q<activerecord>.freeze, [">= 3.0.0"])
-      s.add_development_dependency(%q<appraisal>.freeze, ["~> 2.1.0"])
-      s.add_development_dependency(%q<aruba>.freeze, [">= 0"])
-      s.add_development_dependency(%q<cucumber>.freeze, ["~> 1.3.15"])
-      s.add_development_dependency(%q<rspec>.freeze, ["~> 3.0"])
-      s.add_development_dependency(%q<rspec-its>.freeze, ["~> 1.0"])
-      s.add_development_dependency(%q<simplecov>.freeze, [">= 0"])
-      s.add_development_dependency(%q<timecop>.freeze, [">= 0"])
-      s.add_development_dependency(%q<yard>.freeze, [">= 0"])
-    else
-      s.add_dependency(%q<activesupport>.freeze, [">= 3.0.0"])
-      s.add_dependency(%q<activerecord>.freeze, [">= 3.0.0"])
-      s.add_dependency(%q<appraisal>.freeze, ["~> 2.1.0"])
-      s.add_dependency(%q<aruba>.freeze, [">= 0"])
-      s.add_dependency(%q<cucumber>.freeze, ["~> 1.3.15"])
-      s.add_dependency(%q<rspec>.freeze, ["~> 3.0"])
-      s.add_dependency(%q<rspec-its>.freeze, ["~> 1.0"])
-      s.add_dependency(%q<simplecov>.freeze, [">= 0"])
-      s.add_dependency(%q<timecop>.freeze, [">= 0"])
-      s.add_dependency(%q<yard>.freeze, [">= 0"])
-    end
+  if s.respond_to? :add_runtime_dependency then
+    s.add_runtime_dependency(%q<activesupport>.freeze, [">= 3.0.0"])
+    s.add_development_dependency(%q<activerecord>.freeze, [">= 3.0.0"])
+    s.add_development_dependency(%q<appraisal>.freeze, ["~> 2.1.0"])
+    s.add_development_dependency(%q<aruba>.freeze, [">= 0"])
+    s.add_development_dependency(%q<cucumber>.freeze, ["~> 1.3.15"])
+    s.add_development_dependency(%q<rspec>.freeze, ["~> 3.0"])
+    s.add_development_dependency(%q<rspec-its>.freeze, ["~> 1.0"])
+    s.add_development_dependency(%q<simplecov>.freeze, [">= 0"])
+    s.add_development_dependency(%q<timecop>.freeze, [">= 0"])
+    s.add_development_dependency(%q<yard>.freeze, [">= 0"])
   else
     s.add_dependency(%q<activesupport>.freeze, [">= 3.0.0"])
     s.add_dependency(%q<activerecord>.freeze, [">= 3.0.0"])

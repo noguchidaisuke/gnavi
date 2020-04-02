@@ -4,7 +4,7 @@
       <div class="cover-contents">
         <h1 style="font-family:Genkaimincho;font-size:70px;">Gnavi</h1>
           <div class="text-center top-img">
-            <%= form_with url: new_restaurant_path,method: :get do |f| %>
+            <%= form_with url: new_restaurant_path,method: :get, local: true do |f| %>
               <div class="search">
                 <div class="freeword"><%= f.text_field :freeword, class: 'form-control',placeholder: "キーワードを入力 (例: カレー)" %></div>
                 <div class="area">
@@ -25,7 +25,6 @@
     </div>
   </div>
 <% end %>
-
 <h2 class="h2-top">評価の高いお店から探す</h2>
 <div class="con">
   <%= render @restaurants %>
@@ -52,7 +51,7 @@
               <div class="comment-icons">
                 <% if comment.avatar.attached? %>
                   <div class="user-icon"><%= image_tag(comment.avatar.variant(resize: '55x55!'))%></div>
-                <%else%>
+                <% else %>
                   <div class="user-icon"><img src="<%= gravatar_url(comment.user,size: 55) %>"></div>
                 <%end%>
                 <div class="toppage-comment_name">
@@ -70,5 +69,5 @@
   <% end %>
 </div>
 
-<%= javascript_include_tag 'googlemap.js' %>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbs-NqOhNQ_4ZB_gdsVID5h0LWSEX2GIE&callback=initMap" async defer></script>
+<%= javascript_include_tag 'googlemap.js' %>

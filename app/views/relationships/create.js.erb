@@ -1,0 +1,3 @@
+$('#show-user_follow_button').html('<%= j render('relationships/unfollow',user: @user) %>');
+$('#show-user_follower_count').html('<%= @user.followers.count %>');
+toastr['success']('フォローしました','success');

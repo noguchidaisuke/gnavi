@@ -1,5 +1,11 @@
 @charset "utf-8";
-/*options*/
+/*options
+ *= require toastr
+ *= require jquery-ui
+*/
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
 .wrap{
   flex-wrap: wrap;
 }
@@ -96,6 +102,9 @@ footer {
   }
   .navbar-nav{
     padding-top:5px;
+    span{
+      margin-right:5px;
+    }
   }
 	.nav li a,.navbar-brand {
     font-family:arial black;
@@ -103,7 +112,7 @@ footer {
     height: 60px;
 		width: auto;
 		background: transparent !important;
-    font-size: 20px;
+    font-size: 15px;
     padding-left:30px!important;
 		&:hover{
 			background-color: rgba(255,255,255,0.2);
@@ -249,14 +258,14 @@ footer {
 
 /* cover */
 .logo{
-  background:url(ranking-logo.jpg) center center no-repeat;
+  background:image-url("ranking-logo.jpg") center center no-repeat;
   height:380px;
 }
 .back{
-  background:url("face.png") center center fixed;
+  background:image-url("face.png") center center fixed;
 }
 .sign-body{
-  background:url(mountain.jpg) no-repeat center center fixed;
+  background:image-url("mountain.jpg") no-repeat center center fixed;
   background-size:cover;
   height: 850px;
   margin-top: -20px;
@@ -373,7 +382,7 @@ footer {
   margin-top: -20px;
   width: 100%;
   height: 600px;
-  background: url("vege.jpg") center center no-repeat;
+  background: image-url("vege.jpg") center center no-repeat;
   background-size: cover;
 }
 
@@ -429,6 +438,9 @@ footer {
       position:absolute;
       color:orange;
     }
+  }
+  .purpose{
+    width:50%;
   }
   .btn{
     width:20%;
@@ -616,7 +628,7 @@ footer {
     margin: 0 auto;
   }
 }
-.write-review,.show-restaurant_like form input{
+.write-review,#show-restaurant_like form input{
   border: 1px solid #ccc;
   border-radius:5px;
   box-shadow:3px shadow;
@@ -635,7 +647,7 @@ footer {
 .show-restaurant{
   position:relative;
 }
-.show-restaurant_like form{
+#show-restaurant_like form{
   display:inline!important;
 }
 
@@ -915,6 +927,12 @@ footer {
     top:-7px;
     font-size:10px;
   }
+}
+.margin-center {
+  margin:0 auto;
+}
+.comment_image_field{
+  margin-left:250px;
 }
 /* restaurant show button*/
 .btn-gradient-3d-orange {

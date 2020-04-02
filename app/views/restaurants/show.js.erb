@@ -1,0 +1,2 @@
+$('#comment_render_place').html('<%= j render(@comments) %>')
+$('#paginator').html('<%= j paginate(@comments,remote: true) %>')

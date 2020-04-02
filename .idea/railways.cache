@@ -1,0 +1,38 @@
+                   Prefix Verb   URI Pattern                                                                              Controller#Action
+                     root GET    /                                                                                        toppages#index
+                          GET    /auth/:provider/callback(.:format)                                                       sessions#twitter_create
+            rankings_like GET    /rankings/like(.:format)                                                                 rankings#like
+                    login GET    /login(.:format)                                                                         sessions#new
+                          POST   /login(.:format)                                                                         sessions#create
+                   logout DELETE /logout(.:format)                                                                        sessions#destroy
+                   signup GET    /signup(.:format)                                                                        users#new
+                          POST   /signup(.:format)                                                                        users#create
+             remove_image DELETE /remove_image(.:format)                                                                  comments#remove_image
+             user_follows GET    /users/:user_id/follows(.:format)                                                        users#follows
+           user_followers GET    /users/:user_id/followers(.:format)                                                      users#followers
+               user_likes GET    /users/:user_id/userlikes(.:format)                                                      users#userlikes
+               user_posts GET    /users/:user_id/userposts(.:format)                                                      users#userposts
+                    users POST   /users(.:format)                                                                         users#create
+                edit_user GET    /users/:id/edit(.:format)                                                                users#edit
+                     user GET    /users/:id(.:format)                                                                     users#show
+                          PATCH  /users/:id(.:format)                                                                     users#update
+                          PUT    /users/:id(.:format)                                                                     users#update
+      restaurant_comments POST   /restaurants/:restaurant_id/comments(.:format)                                           comments#create
+   new_restaurant_comment GET    /restaurants/:restaurant_id/comments/new(.:format)                                       comments#new
+  edit_restaurant_comment GET    /restaurants/:restaurant_id/comments/:id/edit(.:format)                                  comments#edit
+       restaurant_comment PATCH  /restaurants/:restaurant_id/comments/:id(.:format)                                       comments#update
+                          PUT    /restaurants/:restaurant_id/comments/:id(.:format)                                       comments#update
+                          DELETE /restaurants/:restaurant_id/comments/:id(.:format)                                       comments#destroy
+           new_restaurant GET    /restaurants/new(.:format)                                                               restaurants#new
+               restaurant GET    /restaurants/:id(.:format)                                                               restaurants#show
+                    likes POST   /likes(.:format)                                                                         likes#create
+                     like DELETE /likes/:id(.:format)                                                                     likes#destroy
+                  charges POST   /charges(.:format)                                                                       charges#create
+               new_charge GET    /charges/new(.:format)                                                                   charges#new
+            relationships POST   /relationships(.:format)                                                                 relationships#create
+             relationship DELETE /relationships/:id(.:format)                                                             relationships#destroy
+       rails_service_blob GET    /rails/active_storage/blobs/:signed_id/*filename(.:format)                               active_storage/blobs#show
+rails_blob_representation GET    /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format) active_storage/representations#show
+       rails_disk_service GET    /rails/active_storage/disk/:encoded_key/*filename(.:format)                              active_storage/disk#show
+update_rails_disk_service PUT    /rails/active_storage/disk/:encoded_token(.:format)                                      active_storage/disk#update
+     rails_direct_uploads POST   /rails/active_storage/direct_uploads(.:format)                                           active_storage/direct_uploads#create
