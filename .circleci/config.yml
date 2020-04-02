@@ -35,7 +35,7 @@ jobs:
    machine:
     image: circleci/classic:edge
    working_directory: ~/myapp
-   steps:
+   steps
     - checkout
     - run:
        name: into ecs
@@ -61,6 +61,6 @@ workflows:
   build-and-deploy:
     jobs:
       - build
-      #- deploy:
-         #requires:
-          #- build
+      - deploy:
+         requires:
+          - build
