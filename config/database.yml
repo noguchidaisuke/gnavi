@@ -20,14 +20,10 @@ default: &default
 development:
   <<: *default
   database: app_development
-  password:
-  host: localhost
 
 test:
   <<: *default
   database: app_test
-  password:
-  host: localhost
 
 production:
   <<: *default
