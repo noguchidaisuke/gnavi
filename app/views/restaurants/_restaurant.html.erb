@@ -13,12 +13,4 @@
   </div>
 <% end %>
 
-<script>
-  $('.star-rating').raty({
-      path: '/assets/',
-      readOnly: true,
-      score: function() {
-            return $(this).attr('data-score');
-    }
-  });
-</script>
+<%= javascript_include_tag('ro_starreview') %>

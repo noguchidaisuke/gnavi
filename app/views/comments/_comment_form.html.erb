@@ -1,10 +1,23 @@
-<div class="p-comment__formBox">
-  <%= form_with(model: comment) do |f| %>
-    <%= f.hidden_field :restaurant_id %>
-    <div class="comment_form">
-      <%= f.label :comment, '記入' %>
-      <%= f.text_area :comment, class: 'form-control', rows: 4 %>
-    </div>
-    <%= f.submit '送信', class: 'btn btn-primary' %>
+<%= form_with(model: [@restaurant,@comment],local: local_assigns[:local_off],authenticity_token: true,html: { multipart: true }) do |f|%>
+  <div class="new-restaurant_form">
+    <div id="star-rating" class="new-rating"></div>
+      <% if @comment.errors.messages[:rating].present? %>
+        <div class="has-error">
+          <span class="help-block"><%= @comment.errors.messages[:rating].join(',') %></span>
+        </div>
+      <% end %>
+    <%= f.text_area :comment,class:'new-restaurant_comment', cols: 40 %>
+  </div>
+　 <%= content_tag :div, class:"new-restaurant_img" do %>
+    <%= f.label :images, '投稿画像  ( 複数選択可能 )' %>
+    <%= f.file_field :images, multiple: true,id: "images" %>
   <% end %>
-</div>
+  <% if @comment.errors.messages[:image].present? %>
+    <div class="has-error">
+      <span class="help-block"><%= @comment.errors.messages[:image].join(',') %></span>
+    </div>
+  <% end %>
+  <div id="preview" style="display:none"></div>
+  <%= f.submit '投稿する！' ,class:'btn btn-primary' %>
+<% end %>
+<%= javascript_include_tag 'preview.js' %>

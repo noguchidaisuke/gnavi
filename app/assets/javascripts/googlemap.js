@@ -1,4 +1,3 @@
-
 function getMyPlace() {
   function success(position) {
     var latitude  = position.coords.latitude;//緯度

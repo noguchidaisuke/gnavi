@@ -1,0 +1,1 @@
+$(".star-rating").raty({path:"",readOnly:!0,score:function(){return $(this).attr("data-score")}});

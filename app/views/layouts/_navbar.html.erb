@@ -14,10 +14,10 @@
         <!-- Nav Left -->
         <ul class="nav navbar-nav">
           <% if logged_in? %>
-            <li><%= link_to (user_path(current_user)) do %><span class="fas fa-user-cog"></span><span class="link">マイページ</span><%end%></li>
-            <li><a href="/rankings/like"><span class="fas fa-crown"></span><span class="link">Ranking</span></a></li>
+            <li><%= link_to user_path(current_user) do %><span class="fas fa-user-cog"></span>MyPage<%end%></li>
+            <li><%= link_to rankings_like_path do %><span class="fas fa-crown"></span>Ranking<% end %></li>
           <% else %>
-            <li><%= link_to 'SignUp',signup_path %></li>
+            <li><%= link_to 'Register',signup_path %></li>
             <li><%= link_to 'Login',login_path %></li>
           <% end %>
         </ul>

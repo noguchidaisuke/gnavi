@@ -1,5 +1,5 @@
 current directory: /Users/noguchidaisuke/gnavi/vendor/bundle/ruby/2.6.0/gems/bindex-0.8.1/ext/skiptrace
-/Users/noguchidaisuke/.rbenv/versions/2.6.3/bin/ruby -I /Users/noguchidaisuke/.rbenv/versions/2.6.3/lib/ruby/2.6.0 -r ./siteconf20200109-74219-1y7h4db.rb extconf.rb
+/Users/noguchidaisuke/.rbenv/versions/2.6.3/bin/ruby -I /Users/noguchidaisuke/.rbenv/versions/2.6.3/lib/ruby/site_ruby/2.6.0 -r ./siteconf20200331-8213-1k2bxfw.rb extconf.rb
 creating Makefile
 
 current directory: /Users/noguchidaisuke/gnavi/vendor/bundle/ruby/2.6.0/gems/bindex-0.8.1/ext/skiptrace
@@ -12,4 +12,4 @@ linking shared-object skiptrace/internal/cruby.bundle
 
 current directory: /Users/noguchidaisuke/gnavi/vendor/bundle/ruby/2.6.0/gems/bindex-0.8.1/ext/skiptrace
 make "DESTDIR=" install
-/usr/local/bin/ginstall -c -m 0755 cruby.bundle ./.gem.20200109-74219-samonm/skiptrace/internal
+/usr/local/bin/ginstall -c -m 0755 cruby.bundle ./.gem.20200331-8213-vgly9g/skiptrace/internal

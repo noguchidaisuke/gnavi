@@ -1,10 +1,11 @@
 class RelationshipsController < ApplicationController
   before_action :require_user_logged_in, :set_user
+
   def create
     relationship = current_user.follow(@user)
-    if relationship.save!
+    if relationship.save
       flash[:success] = 'フォローしました！'
-      recent_page
+      render'create'
     else
       flash[:danger] = 'フォロー失敗しました'
       recent_page
@@ -14,7 +15,7 @@ class RelationshipsController < ApplicationController
   def destroy
     if current_user.unfollow(@user)
       flash[:success] = 'フォローを外しました！'
-      recent_page
+      render 'destroy'
     else
       flash[:danger] = 'フォロー失敗しました'
       recent_page

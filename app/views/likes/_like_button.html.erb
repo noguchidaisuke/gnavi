@@ -1,9 +1,9 @@
 <% if current_user.like?(restaurant) %>
-  <%= form_with(url: like_path(restaurant.id),method: :delete) do |f| %>
+  <%= form_with(url: like_path(restaurant.id),method: :delete,local:false) do |f| %>
     <%= f.submit 'お気に入りを外す', class: 'btn btn-danger btn-xs' %>
   <% end %>
 <% else %>
-  <%= form_with(url: likes_path(restaurant.id)) do |f|%>
+  <%= form_with(url: likes_path(restaurant.id),local:false) do |f|%>
     <%= hidden_field_tag :restaurant_g_id, restaurant.id %>
     <%= f.submit 'お気に入り', class: 'btn btn-warning btn-xs' %>
   <% end %>

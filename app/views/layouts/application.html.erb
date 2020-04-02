@@ -7,21 +7,12 @@
 
     <title>Gnavi</title>
     <%= csrf_meta_tags %>
-    <!-- jquery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!-- Bootstrap JavaScript-->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- app/assets/stylesheets -->
     <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <!-- fontawesome -->
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <!-- app/assets/javascripts-->
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    
-
   </head>
 
   <body>
@@ -30,6 +21,7 @@
     <%= yield :cover %>
     <div class="container">
       <%= yield %>
+      <%= render 'layouts/modal' %>
     </div>
 
     <%= render 'layouts/footer' %>

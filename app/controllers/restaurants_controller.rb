@@ -1,4 +1,5 @@
 class RestaurantsController < ApplicationController
+
   def new
     @zoom = 16
     url = 'https://api.gnavi.co.jp/RestSearchAPI/v3/'
@@ -13,21 +14,21 @@ class RestaurantsController < ApplicationController
     ###　検索欄が空欄の場合
     if freeword.empty? && area.empty?
       flash[:danger] = "フリーワードかエリアは必須です。"
-      redirect_back(fallback_location: root_path) and return
+      redirect_back(fallback_location: root_path)
     end
-    ### 現在地取得できていない場合の処理
+    ### 現在地取得できていない場合
     if area == "現在地" && latitude == nil
-      flash[:danger] = "現在地を取得できませんでした。もう一度お願いします。"
-      redirect_back(fallback_location: root_path) and return
+      flash[:danger] = "現在地を取得できませんでした。ブラウザ設定を確認してください"
+      redirect_back(fallback_location: root_path)
     end
-
-    ###　必要なquery作成
+    ###　freewordの作成
     if area == "現在地"
       query.merge!({latitude: latitude, longitude: longitude})
       @zoom = 18
     else
       freeword += ',' + area
     end
+
     query.merge!({freeword: freeword})
     response = Faraday.get(url, query)
     response_json = JSON.parse(response.body)
@@ -46,8 +47,8 @@ class RestaurantsController < ApplicationController
   def show
     @restaurant = Restaurant.find(params[:id])
     @latlng = [@restaurant[:latitude], @restaurant[:longitude]]
-    @comment = @restaurant.comments.new
-    @comments = @restaurant.comments.with_attached_images.includes(:user).order(created_at: :DESC)
+    #@comment = @restaurant.comments.new create.jsから帰ってきたとき、これ邪魔なるかもしらん
+    @comments = @restaurant.comments.with_attached_images.includes(:user).order(created_at: :DESC).page(params[:page]).per(8)
     @comment_images = @comments.select{ |comment| comment.images.attached? }
     @avg_comment_rating = @comments.average(:rating)&.round(1) || 3
   end
