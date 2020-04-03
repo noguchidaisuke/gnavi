@@ -1,5 +1,5 @@
 <div class="navbar-form navbar-right">
-  <%= form_with url: new_restaurant_path, method: :get do |f| %>
+  <%= form_with url: new_restaurant_path, method: :get, local: true do |f| %>
     <%= f.text_field :freeword, class: 'form-control',placeholder: 'キーワード'%>
     <%= f.text_field :area,id:'inputarea',class:'form-control m-l-',placeholder: 'エリア指定',autocomplete:'off' %>
     <input type="hidden" name="latlng" id="latlng">
