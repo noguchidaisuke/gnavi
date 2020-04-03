@@ -7,7 +7,7 @@
         <div class="col-xs-5 scroll">
           <% @restaurants.each do |restaurant| %>
             <div class="new-restaurant-result"  id="<%= restaurant.id %>">
-              <%= link_to '',restaurant,class: 'restaurant-link', target: "newtab"%>
+              <%= link_to '',restaurant,class: 'restaurant-link', target: "newtab" %>
               <img src="<%= restaurant.shop_image1 %>" class="new-restaurant_img">
               <div class="new-item_desc">
                 <h4 class="new_item_title m-t20 half"><%= restaurant.name %></h4>
@@ -36,7 +36,7 @@ function initMap() {
         position: {lat: <%= restaurant.latitude || 0 %>, lng: <%= restaurant.longitude || 0 %>},
         map: map
       });
-      infowindow = new google.maps.InfoWindow({content: '<%= link_to restaurant.name,restaurant %>'});
+      infowindow = new google.maps.InfoWindow({content: '<%= link_to restaurant.name,restaurant, target: "newtab" %>'});
       infowindow.open(map, marker);
   <% end %>
 
