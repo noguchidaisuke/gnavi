@@ -47,6 +47,8 @@ jobs:
           echo SECRET_KEY_BASE=$SECRET_KEY_BASE >> .env
           echo AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID >> .env
           echo AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY >> .env
+          echo TWITTER_API_KEY=$TWITTER_API_KEY >> .env
+          echo TWITTER_API_SECRET=$TWITTER_API_SECRET >> .env
     - run:
        name: ECR build
        command: docker build -t ${AWS_ID}/gnavi_web .
