@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Projects</title>
+    
+
+    <link rel="stylesheet" media="all" href="/assets/application-2782597dfa316e91b57ec56123828fea336a0111ce1e1ecc6d7cc23dd5ff8e86.css" data-turbolinks-track="reload" />
+    <script src="/assets/application-1e8e717ba816cb381fb1f9b57ae2ee56fe7ed6162272c4c14c571fb59fae0a8a.js" data-turbolinks-track="reload"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Project Manager</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="/projects">Projects</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+          <li><a href="/users/sign_in">Sign In</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+      
+      <h2>Log in</h2>
+
+<form class="new_user" id="new_user" action="/users/sign_in" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" />
+  <div class="row">
+    <div class="form-group col-xs-12 col-md-4">
+      <input id="email" autofocus="autofocus" class="form-control" type="email" value="" name="user[email]" />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group col-xs-12 col-md-4">
+      <input id="password" autocomplete="off" class="form-control" type="password" name="user[password]" />
+    </div>
+  </div>
+
+    <div class="row">
+      <div class="form-group col-xs-12 col-md-4">
+        <input name="user[remember_me]" type="hidden" value="0" /><input type="checkbox" value="1" name="user[remember_me]" id="user_remember_me" />
+        <label for="user_remember_me">Remember me</label>
+      </div>
+    </div>
+
+  <div class="actions">
+    <input type="submit" name="commit" value="Log in" class="btn btn-primary" data-disable-with="Log in" />
+  </div>
+</form>
+
+  <a href="/users/sign_up">Sign up</a><br />
+
+  <a href="/users/password/new">Forgot your password?</a><br />
+
+
+
+
+
+    </div>
+  </body>
+</html>

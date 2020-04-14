@@ -9,11 +9,7 @@
             <%= form_with model: @user,method: :patch do |f| %>
               <div class="form-group row">
                 <%= f.label :image, class: 'col-xs-3 text-right edit-user_label' %>
-                <% if @user.avatar.attached? %>
-                  <div class="col-xs-3"><%= image_tag(@user.avatar.variant(resize: '100x100!')) %></div>
-                <% else %>
-                  <div class="col-xs-3"><img src="<%= gravatar_url(@user,size: 100) %>"></div>
-                <% end %>
+                <div class="col-xs-3"><%= user_image_tag(@user,100) %></div>
                 <%= f.file_field :avatar %>
               </div>
               <div class="form-group row">

@@ -6,7 +6,6 @@
 
 <!-- ユーザー投稿画像一覧 -->
 <% if @comment_images.present? %>
-  <h4 class="mt-1">投稿された画像一覧</h4>
   <div class="show-restaurant_right_images">
     <% @comment_images.each do |comment_image| %>
       <% comment_image.images.each do |image| %>
@@ -15,7 +14,6 @@
     <% end %>
   </div>
 <%end%>
-
 <!-- comment area -->
 <div class="comment-area col-sm-7">
   <div class="item-desc">
@@ -45,9 +43,6 @@
     <%= paginate @comments,remote: true %>
   </div>
 </div>
-
-<!-- Modal -->
-
 
 <!-- Information table -->
 <div class="col-sm-5">

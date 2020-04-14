@@ -23,7 +23,6 @@
   <%= paginate @restaurants %>
 <% end %>
 
-
 <script>
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
@@ -36,7 +35,7 @@ function initMap() {
         position: {lat: <%= restaurant.latitude || 0 %>, lng: <%= restaurant.longitude || 0 %>},
         map: map
       });
-      infowindow = new google.maps.InfoWindow({content: '<%= link_to restaurant.name,restaurant, target: "newtab" %>'});
+      infowindow = new google.maps.InfoWindow({content: '<%= link_to restaurant.name,restaurant, target: "newtab",class: "google-message" %>'});
       infowindow.open(map, marker);
   <% end %>
 

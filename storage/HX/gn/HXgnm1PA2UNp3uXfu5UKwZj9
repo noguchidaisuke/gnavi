@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Projects</title>
+    
+
+    <link rel="stylesheet" media="all" href="/assets/application-2782597dfa316e91b57ec56123828fea336a0111ce1e1ecc6d7cc23dd5ff8e86.css" data-turbolinks-track="reload" />
+    <script src="/assets/application-1e8e717ba816cb381fb1f9b57ae2ee56fe7ed6162272c4c14c571fb59fae0a8a.js" data-turbolinks-track="reload"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Project Manager</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="/projects">Projects</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+          <li><a href="/users/edit">Aaron Sumner</a></li>
+          <li><a rel="nofollow" data-method="delete" href="/users/sign_out">Sign Out</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+        <div class="row">
+    <div class="col-xs-12">
+        <div class="alert alert-success alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          Signed in successfully.
+        </div>
+    </div>
+  </div>
+
+      <h1>
+  Projects
+
+  <a class="btn btn-primary" href="/projects/new">
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    New Project
+</a></h1>
+
+
+
+    </div>
+  </body>
+</html>

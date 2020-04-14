@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = 'ユーザの登録をしました。'
+      flash[:success]   = 'ユーザの登録をしました。'
       session[:user_id] = @user.id
       redirect_to @user
     else
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
       flash[:success] = 'プロフィールを編集しました！'
       redirect_to @user
     else
-      flash[:danger] = '編集に失敗しました。'
+      flash[:danger]  = '編集に失敗しました。'
       redirect_back(fallback_location: root_path)
     end
   end

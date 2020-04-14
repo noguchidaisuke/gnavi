@@ -1,11 +1,12 @@
 class User < ApplicationRecord
   before_save { self.email.downcase! }
   has_one_attached :avatar
-  validates :name, presence: true, length: { minimum: 3, maximum: 10 }
+  validates :name, presence: true, length: { maximum: 10 }
   validates :email, presence: true, length: { maximum: 50 },uniqueness: true,
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
-  validates :password, length: { minimum: 4 }, on: :create
+  validates :password, length: { minimum: 4, maximum: 20 }, on: :create
   validates :profile, length: { maximum: 200 }
+  validate :avatar_presence #concernで定義
   has_secure_password
 
   has_many :likes, dependent: :destroy
@@ -41,15 +42,14 @@ class User < ApplicationRecord
     like_restaurants.include?(restaurant)
   end
 
-  def self.find_or_create_from_auth(auth)
+  def self.find_or_initialize_from_auth(auth)
     provider = auth[:provider]
     uid = auth[:uid]
     name = auth[:info][:name]
     image = auth[:info][:image]
-
-    self.find_or_create_by(provider: provider,uid: uid) do |user|
-      user.email = 'aiueo@gmail.com'
-      user.password = 'aiueo12345'
+    self.find_or_initialize_by(provider: provider,uid: uid) do |user|
+      user.email = "#{uid}@gmail.com"
+      user.password = 'password'
       user.name = name
       user.image = image
     end

@@ -1,19 +1,25 @@
 class SessionsController < ApplicationController
   def twitter_create
-    user = User.find_or_create_from_auth(request.env['omniauth.auth'])
-    session[:user_id] = user.id
-    redirect_to root_path
+    @user = User.find_or_initialize_from_auth(request.env['omniauth.auth'])
+    if @user.save
+      session[:user_id] = @user.id
+      flash[:success] = "ログインに成功しました"
+      redirect_to @user
+    else
+      flasn.now[:danger] = "ログインに失敗しました"
+      render :new
+    end
   end
 
   def create
-    email = params[:session][:email].downcase
+    email    = params[:session][:email].downcase
     password = params[:session][:password]
     if login(email, password)
-      flash[:success] = 'ログインに成功しました。'
+      flash[:success]     = 'ログインに成功しました。'
       redirect_to @user
     else
-      flash.now[:danger] = invalid_reason(@user,password)
-      render 'new'
+      flash.now[:danger]  = invalid_reason(@user,password)
+      render :new
     end
   end
 

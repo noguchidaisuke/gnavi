@@ -1,5 +1,5 @@
 <%= form_with scope: :session,url: login_path,local: true do |f| %>
-
+  <%= render 'layouts/error_messages', model: @user ||= User.new %>
   <form class="col-12">
     <div class="form-login email">
       <%= f.text_field :email,id: "Email", class: 'form-control',placeholder: "Email" %>
@@ -9,7 +9,9 @@
     </div>
     <button type="submit" class="btn-login" value="ログイン"><i class="fas fa-sign-in-alt"></i>ログイン</button>
     <p class="or">or</p>
-    <button type="submit" class="btn-tweet-login"><i class="fab fa-twitter"></i>Twitterでログイン</button>
+    <%= link_to 'auth/twitter' do  %>
+      <button class="btn-tweet-login"><i class="fab fa-twitter"></i>Twitterでログイン</button>
+    <% end %>
     <br>
   </form>
 <% end %>

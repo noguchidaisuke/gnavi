@@ -1,5 +1,4 @@
 class RestaurantsController < ApplicationController
-
   def new
     @zoom = 16
     url = 'https://api.gnavi.co.jp/RestSearchAPI/v3/'
@@ -47,7 +46,6 @@ class RestaurantsController < ApplicationController
   def show
     @restaurant = Restaurant.find(params[:id])
     @latlng = [@restaurant[:latitude], @restaurant[:longitude]]
-    #@comment = @restaurant.comments.new create.jsから帰ってきたとき、これ邪魔なるかもしらん
     @comments = @restaurant.comments.with_attached_images.includes(:user).order(created_at: :DESC).page(params[:page]).per(8)
     @comment_images = @comments.select{ |comment| comment.images.attached? }
     @avg_comment_rating = @comments.average(:rating)&.round(1) || 3

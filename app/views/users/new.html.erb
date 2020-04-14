@@ -26,7 +26,9 @@
             </div>
             <button type="submit" class="btn-signin"><i class="fas fa-sign-in-alt"></i>登録する</button>
             <p class="or">or</p>
-            <button type="submit" class="btn-tweet-signin"><i class="fab fa-twitter"></i>Twitterでログイン</button>
+            <%= link_to 'auth/twitter' do  %>
+              <button class="btn-tweet-signin"><i class="fab fa-twitter"></i>Twitterでログイン</button>
+            <% end %>
           </form>
         <% end %>
       </div> <!-- end of cotent -->

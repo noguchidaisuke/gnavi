@@ -7,11 +7,7 @@
           <div class="mypage">
             <div class="user-profile row">
               <div class="show-user_image col-xs-4">
-                <% if @user.avatar.attached? %>
-                  <%= image_tag(@user.avatar.variant(resize: '200x200!')) %>
-                <% else %>
-                  <img src="<%= gravatar_url(@user,size: 200) %>">
-                <% end %>
+                <%= user_image_tag(@user,200) %>
                 <div id="show-user_follow_button">
                   <% unless current_user == @user %>
                     <% if current_user.following?(@user) %>
