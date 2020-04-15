@@ -6,7 +6,7 @@ module UsersHelper
     elsif user.image
       image_tag(user.image,size: "#{size}x#{size}")
     else
-      gravatar_url(user,size)
+      image_tag(gravatar_url(user,size))
     end
   end
 

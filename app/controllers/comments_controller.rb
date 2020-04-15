@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
     before_action :require_user_logged_in
     before_action :set_restaurant, except: :remove_image
     before_action :set_comment,only: %w(edit update destroy)
+    before_action :authorize_comment, only: %w(edit update destroy)
 
     def new
         @comment = @restaurant.comments.build
@@ -84,5 +85,9 @@ private
     def all_comments
         @comments = @restaurant.comments.order(created_at: :desc)
         @avg_comment_rating = @comments.average(:rating)&.round(1) || 3
+    end
+
+    def authorize_comment
+        authorize(@comment)
     end
 end

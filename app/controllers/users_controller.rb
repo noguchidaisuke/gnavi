@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :require_user_logged_in, except: %w[new create]
   before_action :set_user, only: %w[show edit update]
   before_action :set_nest_user, only: %w[follows followers userlikes userposts]
-
+  before_action :authorize_user,only: %w[edit update destroy]
   def new
     @user = User.new
   end
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       flash.now[:danger] = 'ユーザの登録に失敗しました。'
-      render 'new'
+      render :new
     end
   end
 
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       flash[:danger]  = '編集に失敗しました。'
-      redirect_back(fallback_location: root_path)
+      redirect_back(fallback_location: root_url)
     end
   end
 
@@ -61,5 +61,9 @@ class UsersController < ApplicationController
 
   def set_nest_user
     @user = User.find(params[:user_id])
+  end
+
+  def authorize_user
+    authorize(@user)
   end
 end

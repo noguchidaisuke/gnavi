@@ -18,7 +18,6 @@ module ValidateMethods
         if avatar.attached?
             if !avatar.content_type.in?('image/jpeg' 'image/png')
                 errors.add(:image, 'はjpegまたはpngファイルのみ有効です')
-                binding.pry
             end
         end
     end

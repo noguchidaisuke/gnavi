@@ -46,6 +46,7 @@ gem 'image_processing', '~> 1.2'
 gem "aws-sdk-s3", require: false
 gem 'toastr-rails', '~> 1.0', '>= 1.0.3'
 gem 'remotipart'
+gem 'pundit'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
