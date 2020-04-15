@@ -9,13 +9,7 @@
             <% @followers.each do |follow|%>
               <%= link_to user_path(follow) do %>
                 <div class="flex col-sm-5 follow_and_follower">
-                  <div class="follow_image">
-                    <% if follow.avatar.attached? %>
-                      <%= image_tag(follow.avatar.variant(resize: '75x75!')) %>
-                    <% else %>
-                      <img src="<%= gravatar_url(follow,size: 75) %>">
-                    <% end %>
-                  </div>
+                  <div class="follow_image"><%= user_image_tag(follow, 75) %></div>
                   <div class="follow_desc">
                     <p class="follow_name"><%= follow.name %></p>
                     <span class="follow_comment"><%= follow.comments.count %></span><span>comments</span><span class="follow_count"><%= @user.followers.count %></span><span>followers</span>

@@ -7,7 +7,7 @@ module ValidateMethods
     def image_presence
         if images.attached?
             images.each do |image|
-                if !image.content_type.in?('image/jpeg', 'image/png')
+                if !image.content_type.in?('image/jpeg' 'image/png')
                     errors.add(:image, '画像はjpegまたはpngファイルのみ有効です')
                 end
             end

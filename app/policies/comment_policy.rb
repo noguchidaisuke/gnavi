@@ -6,4 +6,8 @@ class CommentPolicy < ApplicationPolicy
   def destroy?
     update?
   end
+
+  def remove_image?
+    update?
+  end
 end

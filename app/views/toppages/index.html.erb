@@ -49,11 +49,7 @@
             </span>
             <%= link_to(comment.user,class:'comment-link') do %>
               <div class="comment-icons">
-                <% if comment.avatar.attached? %>
-                  <div class="user-icon"><%= image_tag(comment.avatar.variant(resize: '55x55!'))%></div>
-                <% else %>
-                  <div class="user-icon"><img src="<%= gravatar_url(comment.user,size: 55) %>"></div>
-                <%end%>
+                <div class="user-icon"><%= user_image_tag(comment.user, 55) %></div>
                 <div class="toppage-comment_name">
                   <div><%= comment.user.name %></div>
                 </div>

@@ -1,8 +1,8 @@
 class CommentsController < ApplicationController
     before_action :require_user_logged_in
     before_action :set_restaurant, except: :remove_image
-    before_action :set_comment,only: %w(edit update destroy)
-    before_action :authorize_comment, only: %w(edit update destroy)
+    before_action :set_comment,only: %w(edit update destroy remove_image)
+    before_action :authorize_comment, only: %w(edit update destroy remove_image)
 
     def new
         @comment = @restaurant.comments.build
@@ -13,6 +13,7 @@ class CommentsController < ApplicationController
         @comment = @restaurant.comments.build(comment_params)
         @comment.user_id = current_user.id
         @comment_images = Comment.all.order('created_at DESC').limit(5).with_attached_images
+
         respond_to do |format|
             if @comment.save
                 format.html {
@@ -21,6 +22,7 @@ class CommentsController < ApplicationController
                 }
                 format.js { all_comments }
             else
+
                 format.html { render :new }
                 format.js { render :new }
             end
@@ -59,6 +61,7 @@ class CommentsController < ApplicationController
     end
 
     def remove_image
+        authorize(@comment)
         image = ActiveStorage::Attachment.find(params[:remove_id])
         image.purge
         recent_page
@@ -75,7 +78,7 @@ private
     end
 
     def set_comment
-        @comment = Comment.find(params[:id])
+        @comment = Comment.find(params[:id] || params[:comment_id])
     end
 
     def recent_page
