@@ -4,19 +4,17 @@
 ## アプリケーション概要
 
 ぐるなびAPIを使った口コミ投稿サイト。
-
-***デモ***
- 
-![デモ](https://my-gnavi-free.ga/)
  
 ## 機能
  
-- ユーザー登録
-- コメント投稿
-- 星で評価
 - ぐるなびAPIを使った検索機能
 - 現在地から検索
 - 地名から検索
+![gnavi_search](https://user-images.githubusercontent.com/37904275/79435031-2363e900-800a-11ea-8716-743634d4cc15.gif)
+- コメント投稿
+- 星で評価
+![gnavi_review](https://user-images.githubusercontent.com/37904275/79436199-86a24b00-800b-11ea-8280-10f28f9d12c1.gif)
+- ユーザー登録
 - ランキング機能
 
 ## 使い方
@@ -41,4 +39,5 @@ Rails / Mysql / Docker / CircleCI / Jquery / ECS /  RDS / SchemaSpy
 ##　外部API
 Gurunavi / Twitter / GoogleMap / Stripe
  
- ![gnavi_search](https://user-images.githubusercontent.com/37904275/79435031-2363e900-800a-11ea-8716-743634d4cc15.gif)
+ 
+ 
