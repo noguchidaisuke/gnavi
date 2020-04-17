@@ -3,7 +3,7 @@
  
 ## アプリケーション概要
 Railsで作ったお店の口コミ投稿サイト。
-
+[url](https://my-gnavi-free.ga/)
 
 ## demo
 ![gnavi-re-sm](https://user-images.githubusercontent.com/37904275/79518961-54393200-808d-11ea-8c2b-407a59784ecc.gif)
