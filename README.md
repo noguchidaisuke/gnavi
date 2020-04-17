@@ -18,6 +18,7 @@
 ## テスト
 使ったGem
 - Rspec/FactoryBot/Capybara/VCR/mock 
+
 内容
 - 簡単なUserModelの単体テスト
 - ログイン周りの統合テスト
@@ -25,7 +26,10 @@
 [参照文献](https://leanpub.com/everydayrailsrspec-jp)
  
 ## デプロイ
-ECS/ELB/RDS/S3/IAM/AutoScaling/
+ECS/ELB/RDS/S3/IAM/AutoScaling
+
+## CICD
+
  
 ## 使用技術一覧
 Rails / Mysql / Docker / CircleCI / Jquery / ECS /  RDS / SchemaSpy
