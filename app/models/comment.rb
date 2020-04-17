@@ -5,6 +5,7 @@ class Comment < ApplicationRecord
   validates :comment, length: { maximum: 300 }
   validates :rating, presence: true
   validate :image_presence
-
   delegate :avatar, to: :user
+
+  default_scope { order(created_at: :desc) }
 end

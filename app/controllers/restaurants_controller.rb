@@ -13,12 +13,12 @@ class RestaurantsController < ApplicationController
     ###　検索欄が空欄の場合
     if freeword.empty? && area.empty?
       flash[:danger] = "フリーワードかエリアは必須です。"
-      redirect_back(fallback_location: root_path)
+      recent_path
     end
     ### 現在地取得できていない場合
     if area == "現在地" && latitude == nil
       flash[:danger] = "現在地を取得できませんでした。ブラウザ設定を確認してください"
-      redirect_back(fallback_location: root_path)
+      recent_path
     end
     ###　freewordの作成
     if area == "現在地"
@@ -39,7 +39,7 @@ class RestaurantsController < ApplicationController
     rescue => e
       logger.error e.message
       flash[:danger] = '該当のお店が見つかりませんでした。他のキーワードでお願いします'
-      redirect_back(fallback_location: root_path)
+      recent_path
     end
   end
 
@@ -79,5 +79,9 @@ class RestaurantsController < ApplicationController
       empty_box << restaurant
     end
     empty_box.to_ary
+  end
+
+  def recent_path
+    redirect_back(fallback_location: root_path)
   end
 end
