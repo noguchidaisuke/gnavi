@@ -1,8 +1,10 @@
 <%= render 'restaurant_nav'%>
 <!-- top map -->
-<div class="show-restaurant_map">
-  <div id="map"></div>
-</div>
+<% content_for :cover do %>
+  <div class="show-restaurant_map">
+    <div id="map"></div>
+  </div>
+<% end %>
 
 <!-- ユーザー投稿画像一覧 -->
 <% if @comment_images.present? %>

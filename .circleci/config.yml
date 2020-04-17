@@ -38,7 +38,7 @@ jobs:
    steps:
     - checkout
     - run:
-       name: into ecs
+       name: into ec
        command: $(aws ecr get-login --region ${AWS_REGION} --no-include-email)
     - run:
         name: addenv
