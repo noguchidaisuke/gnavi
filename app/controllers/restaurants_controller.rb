@@ -1,41 +1,28 @@
 class RestaurantsController < ApplicationController
+  before_action :params_valid?, only: new
+
   def new
-    @zoom = 16
     url = 'https://api.gnavi.co.jp/RestSearchAPI/v3/'
-    freeword = params[:freeword]
-    area = params[:area]
-    latitude, longitude = params[:latlng].scan(/[0-9]+.[0-9]+/)
     query = {
       keyid: ENV['GURUNAVI_API_KEY'],
       hit_per_page: 32
     }
-
-    ###　検索欄が空欄の場合
-    if freeword.empty? && area.empty?
-      flash[:danger] = "フリーワードかエリアは必須です。"
-      recent_path
-    end
-    ### 現在地取得できていない場合
-    if area == "現在地" && latitude == nil
-      flash[:danger] = "現在地を取得できませんでした。ブラウザ設定を確認してください"
-      recent_path
-    end
     ###　freewordの作成
-    if area == "現在地"
-      query.merge!({latitude: latitude, longitude: longitude})
-      @zoom = 18
+    if params[:area] == "現在地"
+      @zoom = 18                # google mapのscope
+      latitude, longitude = params[:latlng].scan(/[0-9]+.[0-9]+/)
+      query.merge!({latitude: latitude, longitude: longitude,freeword: params[:freeword]})
     else
-      freeword += ',' + area
+      @zoom = 16
+      params[:freeword] += ',' + params[:area]
+      query.merge!({freeword: params[:freeword]})
     end
 
-    query.merge!({freeword: freeword})
     response = Faraday.get(url, query)
     response_json = JSON.parse(response.body)
     begin
       restaurants = restaurants_factory(response_json)
       @restaurants = Kaminari.paginate_array(restaurants).page(params[:page]).per(8)
-      @centerlat = @restaurants.first.latitude
-      @centerlong = @restaurants.first.longitude
     rescue => e
       logger.error e.message
       flash[:danger] = '該当のお店が見つかりませんでした。他のキーワードでお願いします'
@@ -52,6 +39,17 @@ class RestaurantsController < ApplicationController
   end
 
   private
+
+  def restaurants_factory(response_json)
+    empty_box = []
+    response_json['rest'].each do |rest|
+      hash = make_hash(rest)
+      restaurant = Restaurant.find_by(g_id: hash[:g_id]) || Restaurant.create(hash)  #なぜかf_or_c_by使えない、、、
+      restaurant.shop_image1 = 'https://ximg.retty.me/crop/s172x172/-/retty_main/images/noimg_200_150.png' if restaurant.shop_image1.empty?
+      empty_box << restaurant
+    end
+    empty_box.to_ary
+  end
 
   def make_hash(rest)
     {
@@ -70,18 +68,20 @@ class RestaurantsController < ApplicationController
     }
   end
 
-  def restaurants_factory(response_json)
-    empty_box = []
-    response_json['rest'].each do |rest|
-      hash = make_hash(rest)
-      restaurant = Restaurant.find_by(g_id: hash[:g_id]) || Restaurant.create(hash)  #なぜかf_or_c_by使えない、、、
-      restaurant.shop_image1 = 'https://ximg.retty.me/crop/s172x172/-/retty_main/images/noimg_200_150.png' if restaurant.shop_image1.empty?
-      empty_box << restaurant
-    end
-    empty_box.to_ary
-  end
-
   def recent_path
     redirect_back(fallback_location: root_path)
+  end
+
+  def params_valid?
+    ###　検索欄が空欄の場合
+    if params[:freeword].empty? && params[:area].empty?
+      flash[:danger] = "フリーワードかエリアは必須です。"
+      recent_path
+    end
+    ### 現在地取得できていない場合
+    if params[:area] == "現在地" && params[:latlng].empty?
+      flash[:danger] = "現在地を取得できませんでした。ブラウザ設定を確認してください"
+      recent_path
+    end
   end
 end

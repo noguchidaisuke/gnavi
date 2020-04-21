@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: %w[show edit update]
   before_action :set_nest_user, only: %w[follows followers userlikes userposts]
   before_action :authorize_user,only: %w[edit update destroy]
+
   def new
     @user = User.new
   end

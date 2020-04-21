@@ -8,4 +8,5 @@ class Comment < ApplicationRecord
   delegate :avatar, to: :user
 
   default_scope { order(created_at: :desc) }
+  scope :last_five, -> { limit(5).with_attached_images }
 end

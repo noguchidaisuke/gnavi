@@ -14,10 +14,8 @@ default: &default
   encoding: utf8
   pool: 5
   username: root
-  password:
-  host: localhost
-  #password: password
-  #host: db
+  password: password
+  host: db
 
 development:
   <<: *default
@@ -33,4 +31,4 @@ production:
   #adapter: mysql
   #encoding: unicode
   #pool: 5
-  #host: aws-and-infra-db.cvh8iz4psy0l.ap-northeast-1.rds.amazonaws.com
+  host: aws-and-infra-db.cvh8iz4psy0l.ap-northeast-1.rds.amazonaws.com

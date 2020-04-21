@@ -3,17 +3,17 @@ class CommentsController < ApplicationController
     before_action :set_restaurant, except: :remove_image
     before_action :set_comment,only: %w(edit update destroy remove_image)
     before_action :authorize_comment, only: %w(edit update destroy remove_image)
-    before_action :all_comments, only: %w(update destroy)
+    before_action :all_comments, only: %w(update destroy create)
 
     def new
         @comment = @restaurant.comments.build
-        @comment_images = Comment.all.order('created_at DESC').limit(5).with_attached_images
+        @comment_images = Comment.last_five
     end
 
     def create
         @comment = @restaurant.comments.build(comment_params)
         @comment.user_id = current_user.id
-        @comment_images = Comment.limit(5).with_attached_images
+        @comment_images = Comment.last_five
 
         respond_to do |format|
             if @comment.save
@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
                     flash[:success] = "コメントを投稿しました！"
                     redirect_to @restaurant
                 }
-                format.js { all_comments }
+                format.js {}
             else
                 render :new
             end
@@ -63,7 +63,7 @@ private
     end
 
     def all_comments
-        @comments = @restaurant.comments.order(created_at: :desc)
+        @comments = @restaurant.comments
         @avg_comment_rating = @comments.average(:rating)&.round(1) || 3
     end
 
